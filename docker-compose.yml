@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+    php:
+        build:
+            context: ./
+            dockerfile: docker/php/Dockerfile
+        ports:
+            - "80:80"
+        networks:
+            internal:
+                ipv4_address: 172.20.0.2
+
+    mysql:
+        image: mysql:8.0.35-debian
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./docker/mysql/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+            - data:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD
+        networks:
+            internal:
+                ipv4_address: 172.20.0.3
+
+    bind9:
+        image: bind9:latest
+        ports:
+            - "53:53/tcp"
+            - "53:53/udp"
+        environment:
+            - BIND9_USER
+            - TZ
+        networks:
+            internal:
+                ipv4_address: 172.20.0.4
+
+volumes:
+    data: {}
+
+networks:
+    internal:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.20.0.0/16
