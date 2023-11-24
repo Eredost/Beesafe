@@ -1,0 +1,13 @@
+$TTL 2d
+
+$ORIGIN beesafe.co.
+
+@       IN      SOA     ns.beesafe.co. admin.beesafe.co. (
+                        2023112301      ; Serial
+                        12h             ; Refresh
+                        15m             ; Retry
+                        3w              ; Expire
+                        2h )            ; Minimum TTL
+        IN      NS      ns.beesafe.co.
+ns      IN      A       172.20.0.4
+www     IN      A       172.20.0.2

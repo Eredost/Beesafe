@@ -1,0 +1,12 @@
+$TTL 1d
+
+$ORIGIN 0.20.172.in-addr.arpa.
+
+@        IN        SOA  ns.beesafe.co. admin.beesafe.co. (
+                        2023112301      ; Serial
+                        30800           ; Refresh
+                        7200            ; Retry
+                        604800          ; Expire
+                        300 )           ; Minimum TTL
+         IN        NS    ns.beesafe.co.
+2        IN        PTR   www.beesafe.co.

@@ -25,10 +25,13 @@ services:
                 ipv4_address: 172.20.0.3
 
     bind9:
-        image: bind9:latest
+        image: ubuntu/bind9:latest
         ports:
             - "53:53/tcp"
             - "53:53/udp"
+        volumes:
+            - ./docker/bind9/config:/etc/bind
+            - ./docker/bind9/cache:/var/cache/bind
         environment:
             - BIND9_USER
             - TZ
