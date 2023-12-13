@@ -11,3 +11,4 @@ $ORIGIN beesafe.co.
         IN      NS      ns.beesafe.co.
 ns      IN      A       172.20.0.4
 www     IN      A       172.20.0.2
+mysql   IN      A       172.20.0.3
